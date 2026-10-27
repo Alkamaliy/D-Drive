@@ -171,6 +171,41 @@ export const HomeLanding = ({ setActiveTab }) => {
         </div>
       </section>
 
+      <section className="max-w-5xl mx-auto px-4">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 shadow-[0_0_0_1px_rgba(251,191,36,0.08)]">
+          <div className="flex items-center gap-3 mb-5">
+            <Landmark className="text-amber-400" size={20} />
+            <h3 className="text-xl font-extrabold text-white">Terms & Conditions</h3>
+          </div>
+
+          <p className="text-sm leading-7 text-slate-300">
+            D-Drive is a trusted platform created to connect users in a secure, professional, and lawful environment. By using this platform, you agree to comply with all rules, regulations, and applicable laws in Nigeria.
+          </p>
+
+          <p className="mt-4 text-sm leading-7 text-slate-300">
+            We maintain a strict standard of conduct and will not tolerate fraud, misconduct, abuse, harassment, unsafe behavior, or any violation of our platform policies. Any user found in breach of these terms may face warnings, account suspension, permanent removal from the platform, and possible referral to legal or security authorities where necessary.
+          </p>
+
+          <p className="mt-4 text-sm leading-7 text-slate-300">
+            Users must provide accurate information, act with integrity, and respect the rights and dignity of others. We reserve the right to investigate complaints, review activities, and take appropriate action to protect the safety, transparency, and credibility of the platform.
+          </p>
+
+          <p className="mt-4 text-sm leading-7 text-slate-300">
+            This platform is committed to professionalism, accountability, and compliance, and we work with legal practitioners and relevant security authorities to uphold the rule of law and protect all users across Nigeria.
+          </p>
+
+          <div className="mt-6 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 sm:p-5">
+            <p className="text-sm font-semibold text-amber-300">Report any form of fraud, misconduct, abuse, unsafe behavior, harassment, or violation of platform rules.</p>
+            <p className="mt-3 text-sm text-slate-300">Contact the management:</p>
+            <ul className="mt-2 space-y-1 text-sm text-slate-200">
+              <li><span className="font-medium text-white">WhatsApp:</span> 09054896930</li>
+              <li><span className="font-medium text-white">Call:</span> 09022940735</li>
+              <li><span className="font-medium text-white">Email:</span> kamaldeenhussein123@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
