@@ -1,6 +1,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import { VerifiedBadge } from '../components/VerifiedBadge';
+import { DriverSpotlight } from '../components/DriverSpotlight';
 import { 
   Car, 
   ShieldCheck, 
@@ -128,6 +129,9 @@ export const HomeLanding = ({ setActiveTab }) => {
           ))}
         </div>
       </section>
+
+      {/* Driver Spotlight */}
+      <DriverSpotlight />
 
       {/* How It Works Breakdown */}
       <section className="max-w-7xl mx-auto px-4 bg-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-800">
