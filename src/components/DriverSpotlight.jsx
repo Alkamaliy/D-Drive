@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Activity, Star, X, Minus, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { Activity, Star } from 'lucide-react';
 
-// ─── 10 Spotlight profiles (drivers + clients appreciating them) ────────────
+// ─── 10 Spotlight profiles ─────────────────────────────────────────────────
 const SPOTLIGHTS = [
   {
     id: 1,
@@ -10,9 +10,9 @@ const SPOTLIGHTS = [
     location: 'Lekki Phase 1, Lagos',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Driving Expertise',      score: 95 },
-      { label: 'Client Communication',   score: 98 },
-      { label: 'Trip Punctuality',        score: 92 },
+      { label: 'Driving Expertise',    score: 95 },
+      { label: 'Client Communication', score: 98 },
+      { label: 'Trip Punctuality',     score: 92 },
     ],
     appreciation: [
       {
@@ -39,9 +39,9 @@ const SPOTLIGHTS = [
     location: 'Maitama, Abuja',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Route Knowledge',        score: 99 },
-      { label: 'Safety Record',          score: 100 },
-      { label: 'Client Satisfaction',    score: 97 },
+      { label: 'Route Knowledge',     score: 99 },
+      { label: 'Safety Record',       score: 100 },
+      { label: 'Client Satisfaction', score: 97 },
     ],
     appreciation: [
       {
@@ -68,9 +68,9 @@ const SPOTLIGHTS = [
     location: 'Victoria Island, Lagos',
     avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Vehicle Handling',       score: 97 },
-      { label: 'Discretion & Privacy',   score: 96 },
-      { label: 'Trip Planning',          score: 93 },
+      { label: 'Vehicle Handling',     score: 97 },
+      { label: 'Discretion & Privacy', score: 96 },
+      { label: 'Trip Planning',        score: 93 },
     ],
     appreciation: [
       {
@@ -97,9 +97,9 @@ const SPOTLIGHTS = [
     location: 'Port Harcourt, Rivers State',
     avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Fleet Management',       score: 94 },
-      { label: 'Night Driving Safety',   score: 91 },
-      { label: 'Client Communication',   score: 96 },
+      { label: 'Fleet Management',     score: 94 },
+      { label: 'Night Driving Safety', score: 91 },
+      { label: 'Client Communication', score: 96 },
     ],
     appreciation: [
       {
@@ -126,9 +126,9 @@ const SPOTLIGHTS = [
     location: 'Kano, Kano State',
     avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Long Distance Driving',  score: 98 },
-      { label: 'Cargo Safety',           score: 95 },
-      { label: 'Punctuality',            score: 97 },
+      { label: 'Long Distance Driving', score: 98 },
+      { label: 'Cargo Safety',          score: 95 },
+      { label: 'Punctuality',           score: 97 },
     ],
     appreciation: [
       {
@@ -155,9 +155,9 @@ const SPOTLIGHTS = [
     location: 'Enugu, Enugu State',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Passenger Comfort',      score: 99 },
-      { label: 'Defensive Driving',      score: 96 },
-      { label: 'Route Efficiency',       score: 93 },
+      { label: 'Passenger Comfort',  score: 99 },
+      { label: 'Defensive Driving',  score: 96 },
+      { label: 'Route Efficiency',   score: 93 },
     ],
     appreciation: [
       {
@@ -184,9 +184,9 @@ const SPOTLIGHTS = [
     location: 'Ikeja, Lagos',
     avatar: 'https://images.unsplash.com/photo-1542178243-bc20204b769f?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Airport Logistics',      score: 100 },
-      { label: 'Flight Tracking',        score: 94 },
-      { label: 'Luggage Handling',       score: 97 },
+      { label: 'Airport Logistics', score: 100 },
+      { label: 'Flight Tracking',   score: 94 },
+      { label: 'Luggage Handling',  score: 97 },
     ],
     appreciation: [
       {
@@ -213,9 +213,9 @@ const SPOTLIGHTS = [
     location: 'Asokoro, Abuja',
     avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Security Awareness',     score: 98 },
-      { label: 'Protocol Knowledge',     score: 99 },
-      { label: 'Confidentiality',        score: 100 },
+      { label: 'Security Awareness', score: 98 },
+      { label: 'Protocol Knowledge', score: 99 },
+      { label: 'Confidentiality',    score: 100 },
     ],
     appreciation: [
       {
@@ -242,9 +242,9 @@ const SPOTLIGHTS = [
     location: 'Ikoyi, Lagos',
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Luxury Car Handling',    score: 97 },
-      { label: 'Interior Care',          score: 95 },
-      { label: 'Client Experience',      score: 99 },
+      { label: 'Luxury Car Handling', score: 97 },
+      { label: 'Interior Care',       score: 95 },
+      { label: 'Client Experience',   score: 99 },
     ],
     appreciation: [
       {
@@ -271,9 +271,9 @@ const SPOTLIGHTS = [
     location: 'Ibadan, Oyo State',
     avatar: 'https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?w=300&auto=format&fit=crop&q=80',
     skills: [
-      { label: 'Night Safety Record',    score: 96 },
-      { label: 'Event Coordination',     score: 94 },
-      { label: 'Sobriety & Alertness',   score: 100 },
+      { label: 'Night Safety Record',  score: 96 },
+      { label: 'Event Coordination',   score: 94 },
+      { label: 'Sobriety & Alertness', score: 100 },
     ],
     appreciation: [
       {
@@ -319,7 +319,7 @@ function SkillBar({ label, score, animate }) {
 // ─── Appreciation card ─────────────────────────────────────────────────────
 function AppreciationCard({ from, avatar, quote }) {
   return (
-    <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-3 flex-1 min-w-0">
+    <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-3 min-w-0">
       <div className="flex items-center gap-2">
         <img
           src={avatar}
@@ -353,22 +353,19 @@ function DotNav({ total, current, onSelect }) {
   );
 }
 
-// ─── Main component ────────────────────────────────────────────────────────
-const AUTO_INTERVAL = 6000; // ms between auto-slides
+// ─── Main component — always visible, no controls ─────────────────────────
+const AUTO_INTERVAL = 6000;
 
 export function DriverSpotlight() {
-  const [visible, setVisible]     = useState(true);
-  const [minimized, setMinimized] = useState(false);
-  const [index, setIndex]         = useState(0);
-  const [animate, setAnimate]     = useState(false);
-  const [paused, setPaused]       = useState(false);
-  const [fading, setFading]       = useState(false);
-  const timerRef                  = useRef(null);
+  const [index,   setIndex]   = useState(0);
+  const [animate, setAnimate] = useState(false);
+  const [fading,  setFading]  = useState(false);
+  const timerRef = useRef(null);
 
-  const total    = SPOTLIGHTS.length;
-  const current  = SPOTLIGHTS[index];
+  const total   = SPOTLIGHTS.length;
+  const current = SPOTLIGHTS[index];
 
-  // ── slide transition helper ──────────────────────────────────────────────
+  // ── slide transition ──────────────────────────────────────────────────────
   const goTo = useCallback((next) => {
     setFading(true);
     setAnimate(false);
@@ -380,174 +377,109 @@ export function DriverSpotlight() {
   }, []);
 
   const goNext = useCallback(() => goTo((index + 1) % total), [goTo, index, total]);
-  const goPrev = useCallback(() => goTo((index - 1 + total) % total), [goTo, index, total]);
 
-  // ── auto-advance ─────────────────────────────────────────────────────────
+  // ── auto-advance ──────────────────────────────────────────────────────────
   useEffect(() => {
-    if (paused || minimized || !visible) return;
     timerRef.current = setInterval(goNext, AUTO_INTERVAL);
     return () => clearInterval(timerRef.current);
-  }, [paused, minimized, visible, goNext]);
+  }, [goNext]);
 
-  // ── initial bar animation on mount / re-open ─────────────────────────────
+  // ── initial bar animation ─────────────────────────────────────────────────
   useEffect(() => {
-    if (visible && !minimized) {
-      const t = setTimeout(() => setAnimate(true), 300);
-      return () => clearTimeout(t);
-    }
-    setAnimate(false);
-  }, [visible, minimized]);
-
-  if (!visible) return null;
+    const t = setTimeout(() => setAnimate(true), 300);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto px-4">
       <div className="rounded-3xl border border-slate-700/70 bg-slate-900/80 backdrop-blur-sm shadow-2xl shadow-black/40 overflow-hidden">
 
-        {/* ── Title bar ─────────────────────────────────────────────────── */}
+        {/* ── Title bar — label only, no buttons ── */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-950/70">
           <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-300">
             Driver Spotlight · Appreciation &amp; Feedback
           </span>
-
-          <div className="flex items-center gap-2">
-            {/* pause / play */}
-            <button
-              onClick={() => setPaused((p) => !p)}
-              className="text-slate-500 hover:text-amber-400 transition"
-              aria-label={paused ? 'Play' : 'Pause'}
-            >
-              {paused ? <Play size={13} /> : <Pause size={13} />}
-            </button>
-
-            {/* previous */}
-            <button
-              onClick={goPrev}
-              className="text-slate-500 hover:text-slate-300 transition"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={15} />
-            </button>
-
-            {/* next */}
-            <button
-              onClick={goNext}
-              className="text-slate-500 hover:text-slate-300 transition"
-              aria-label="Next"
-            >
-              <ChevronRight size={15} />
-            </button>
-
-            {/* minimize */}
-            <button
-              onClick={() => setMinimized((m) => !m)}
-              className="text-slate-500 hover:text-slate-300 transition"
-              aria-label="Minimize"
-            >
-              <Minus size={15} />
-            </button>
-
-            {/* close */}
-            <button
-              onClick={() => setVisible(false)}
-              className="text-slate-500 hover:text-rose-400 transition"
-              aria-label="Close"
-            >
-              <X size={15} />
-            </button>
+          <div className="flex items-center gap-2 text-[10px] text-slate-500">
+            <Activity size={13} className="text-amber-400 animate-pulse" />
+            <span>{index + 1} / {total}</span>
           </div>
         </div>
 
-        {!minimized && (
-          <div
-            className="transition-opacity duration-250"
-            style={{ opacity: fading ? 0 : 1 }}
-          >
-            {/* ── Avatar hero ───────────────────────────────────────────── */}
-            <div className="relative flex flex-col items-center pt-8 pb-4 bg-gradient-to-b from-slate-800/60 to-transparent px-4">
-              {/* decorative diamonds */}
-              <div className="absolute inset-0 opacity-5 pointer-events-none select-none overflow-hidden">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-16 h-16 border border-amber-400 rotate-45"
-                    style={{ left: `${i * 18}%`, top: `${(i % 3) * 30}%` }}
-                  />
-                ))}
-              </div>
-
-              <div className="relative">
-                <img
-                  src={current.avatar}
-                  alt={current.name}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-slate-700 shadow-xl"
+        {/* ── Content ── */}
+        <div
+          className="transition-opacity duration-250"
+          style={{ opacity: fading ? 0 : 1 }}
+        >
+          {/* Avatar hero */}
+          <div className="relative flex flex-col items-center pt-8 pb-4 bg-gradient-to-b from-slate-800/60 to-transparent px-4">
+            {/* decorative diamonds */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none select-none overflow-hidden">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-16 h-16 border border-amber-400 rotate-45"
+                  style={{ left: `${i * 18}%`, top: `${(i % 3) * 30}%` }}
                 />
-                <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center">
-                  <span className="w-2 h-2 rounded-full bg-emerald-200 animate-pulse" />
-                </span>
-              </div>
-
-              <h2 className="mt-4 text-xl font-extrabold text-white tracking-tight text-center">
-                {current.name}
-              </h2>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-amber-400 mt-0.5">
-                {current.title}
-              </p>
-              <p className="text-[11px] text-slate-500 mt-1">{current.location}</p>
-
-              {/* dot nav */}
-              <div className="mt-4">
-                <DotNav total={total} current={index} onSelect={goTo} />
-              </div>
-            </div>
-
-            {/* ── Feedback Summary ──────────────────────────────────────── */}
-            <div className="mx-4 mt-2 mb-4 rounded-2xl border border-slate-800 bg-slate-950/60 p-5 space-y-4">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-300">
-                  Feedback Summary
-                </span>
-                <div className="flex items-center gap-2 text-[10px] text-slate-500">
-                  <span>{index + 1} / {total}</span>
-                  <Activity size={14} className="text-amber-400 animate-pulse" />
-                </div>
-              </div>
-
-              {current.skills.map((s) => (
-                <SkillBar key={s.label} label={s.label} score={s.score} animate={animate} />
               ))}
             </div>
 
-            {/* ── Appreciation Wall ─────────────────────────────────────── */}
-            <div className="mx-4 mb-5 rounded-2xl border border-slate-800 bg-slate-950/40 p-5">
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-300 block mb-4">
-                Appreciation Wall
+            <div className="relative">
+              <img
+                src={current.avatar}
+                alt={current.name}
+                className="w-24 h-24 rounded-full object-cover border-4 border-slate-700 shadow-xl"
+              />
+              <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center">
+                <span className="w-2 h-2 rounded-full bg-emerald-200 animate-pulse" />
               </span>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {current.appreciation.map((a) => (
-                  <AppreciationCard key={a.id} {...a} />
-                ))}
-              </div>
             </div>
 
-            {/* ── Progress bar ──────────────────────────────────────────── */}
-            {!paused && (
-              <div className="mx-4 mb-4 h-0.5 bg-slate-800 rounded-full overflow-hidden">
-                <div
-                  key={`${index}-${paused}`}
-                  className="h-full bg-amber-500/60 rounded-full"
-                  style={{
-                    animation: `spotlight-progress ${AUTO_INTERVAL}ms linear forwards`,
-                  }}
-                />
-              </div>
-            )}
+            <h2 className="mt-4 text-xl font-extrabold text-white tracking-tight text-center">
+              {current.name}
+            </h2>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-amber-400 mt-0.5">
+              {current.title}
+            </p>
+            <p className="text-[11px] text-slate-500 mt-1">{current.location}</p>
+
+            <div className="mt-4">
+              <DotNav total={total} current={index} onSelect={goTo} />
+            </div>
           </div>
-        )}
+
+          {/* Feedback Summary */}
+          <div className="mx-4 mt-2 mb-4 rounded-2xl border border-slate-800 bg-slate-950/60 p-5 space-y-4">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-300 block mb-1">
+              Feedback Summary
+            </span>
+            {current.skills.map((s) => (
+              <SkillBar key={s.label} label={s.label} score={s.score} animate={animate} />
+            ))}
+          </div>
+
+          {/* Appreciation Wall */}
+          <div className="mx-4 mb-5 rounded-2xl border border-slate-800 bg-slate-950/40 p-5">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-300 block mb-4">
+              Appreciation Wall
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {current.appreciation.map((a) => (
+                <AppreciationCard key={a.id} {...a} />
+              ))}
+            </div>
+          </div>
+
+          {/* Auto-progress bar */}
+          <div className="mx-4 mb-4 h-0.5 bg-slate-800 rounded-full overflow-hidden">
+            <div
+              key={index}
+              className="h-full bg-amber-500/60 rounded-full"
+              style={{ animation: `spotlight-progress ${AUTO_INTERVAL}ms linear forwards` }}
+            />
+          </div>
+        </div>
       </div>
 
-      {/* inline keyframe for progress bar */}
       <style>{`
         @keyframes spotlight-progress {
           from { width: 0%; }
