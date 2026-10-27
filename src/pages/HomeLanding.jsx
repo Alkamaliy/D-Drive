@@ -15,6 +15,75 @@ import {
 export const HomeLanding = ({ setActiveTab }) => {
   const { drivers, setCurrentRole, formatMoney, FEES } = useApp();
 
+  const featuredProfiles = [
+    {
+      type: 'client',
+      name: 'Mrs. Ada Okafor',
+      location: 'Lagos',
+      role: 'Business Executive',
+      rating: '4.9',
+      label: 'Verified Client',
+      priceLabel: 'Client Access',
+      price: '₦0',
+      summary: 'D-Drive made my booking process smooth, secure, and highly professional. I got a punctual driver and felt confident throughout the entire trip.'
+    },
+    {
+      type: 'client',
+      name: 'Mr. Daniel Eze',
+      location: 'Abuja',
+      role: 'Family Travel Client',
+      rating: '5.0',
+      label: 'Verified Client',
+      priceLabel: 'Client Access',
+      price: '₦0',
+      summary: 'The platform is easy to use and the drivers are respectful, reliable, and very professional. It gave my family the comfort and trust we needed.'
+    },
+    {
+      type: 'client',
+      name: 'Mrs. Grace Akinlade',
+      location: 'Port Harcourt',
+      role: 'Corporate Client',
+      rating: '4.8',
+      label: 'Verified Client',
+      priceLabel: 'Client Access',
+      price: '₦0',
+      summary: 'I appreciate the transparency, safety, and professionalism. Hiring through D-Drive has been stress-free and dependable for my business travel.'
+    },
+    {
+      type: 'driver',
+      name: 'Mr. Ibrahim Musa',
+      location: 'Lagos',
+      role: 'Executive Chauffeur',
+      rating: '4.9',
+      label: 'Verified Driver',
+      priceLabel: 'From',
+      price: '₦25,000/day',
+      summary: 'Professional, punctual, and committed to safe and premium client service. I pride myself on clean travel, excellent etiquette, and comfort.'
+    },
+    {
+      type: 'driver',
+      name: 'Mr. Chinedu Okafor',
+      location: 'Abuja',
+      role: 'Corporate Driver',
+      rating: '5.0',
+      label: 'Verified Driver',
+      priceLabel: 'From',
+      price: '₦30,000/day',
+      summary: 'I focus on discipline, professionalism, and smooth travel experience for executives and families who value trust and safety.'
+    },
+    {
+      type: 'driver',
+      name: 'Mr. Tunde Adebayo',
+      location: 'Ibadan',
+      role: 'City Chauffeur',
+      rating: '4.8',
+      label: 'Verified Driver',
+      priceLabel: 'From',
+      price: '₦18,500/day',
+      summary: 'Dedicated to punctual service, good communication, and a secure trip experience. I believe trust and professionalism must always come first.'
+    }
+  ];
+
   return (
     <div className="space-y-20 pb-20">
 
@@ -86,44 +155,61 @@ export const HomeLanding = ({ setActiveTab }) => {
 
       </section>
 
-      {/* Featured Nigerian Drivers */}
+      {/* Featured Platform Profiles */}
       <section className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="flex items-center space-x-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
-              <MapPin size={16} />
-              <span>Chauffeurs Across Nigeria</span>
-            </div>
-            <h2 className="text-3xl font-extrabold text-white">Verified Drivers Ready in Nigeria</h2>
+        <div className="mb-10 text-center">
+          <div className="flex items-center justify-center space-x-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
+            <ShieldCheck size={16} />
+            <span>Trusted by Clients & Drivers</span>
           </div>
-
-          <button
-            onClick={() => { setCurrentRole('client'); setActiveTab('client-portal'); }}
-            className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center space-x-1"
-          >
-            <span>Explore All Nigerian Drivers ({drivers.length})</span>
-            <ArrowRight size={14} />
-          </button>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Professional profiles that build trust</h2>
+          <p className="mt-3 text-slate-300 text-sm max-w-2xl mx-auto">
+            D-Drive brings together satisfied clients and verified professional drivers who value safety, professionalism, and reliability across Nigeria.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {drivers.slice(0, 3).map((driver) => (
-            <div key={driver.id} className="glass-card rounded-3xl p-6 border border-slate-800 hover:border-amber-500/40 transition">
-              <div className="flex items-center space-x-4">
-                <img src={driver.avatar} alt={driver.name} className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-700" />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {featuredProfiles.map((profile, index) => (
+            <div key={`${profile.name}-${index}`} className="group relative overflow-hidden rounded-[26px] border border-slate-800 bg-slate-950/90 p-5 shadow-[0_18px_45px_rgba(15,23,42,0.38)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/50 hover:shadow-[0_24px_60px_rgba(251,191,36,0.15)]">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+
+              <div className="flex items-center justify-between gap-3">
                 <div>
-                  <h3 className="font-bold text-white text-base">{driver.name}</h3>
-                  <p className="text-xs text-slate-400">{driver.location}</p>
-                  <div className="mt-1">
-                    <VerifiedBadge size="sm" />
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-amber-300">
+                    {profile.type === 'client' ? 'Client Appreciation' : 'Professional Driver'}
+                  </p>
+                  <h3 className="mt-2 text-xl font-bold text-white">{profile.name}</h3>
+                </div>
+
+                <div className="flex items-center gap-1 rounded-full border border-amber-500/25 bg-amber-500/10 px-2.5 py-1 text-[11px] font-bold text-amber-300">
+                  <Star size={12} className="fill-amber-400 text-amber-400" />
+                  <span>{profile.rating}</span>
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-slate-400">{profile.location}</p>
+                  <p className="mt-1 text-sm font-medium text-slate-200">{profile.role}</p>
+                </div>
+
+                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-emerald-300">
+                  {profile.label}
+                </span>
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-900/80 p-3">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">{profile.priceLabel}</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-xl font-extrabold text-amber-400 font-mono">{profile.price}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-slate-800 flex justify-between text-xs">
-                <span className="text-slate-400">Experience: <strong className="text-white">{driver.experienceYears} Years</strong></span>
-                <span className="text-slate-400">Rate: <strong className="text-amber-400 font-mono">{formatMoney(driver.dailyRate)}/day</strong></span>
-              </div>
+              <p className="mt-5 text-sm leading-6 text-slate-300">
+                “{profile.summary}”
+              </p>
             </div>
           ))}
         </div>
