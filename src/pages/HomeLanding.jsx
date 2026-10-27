@@ -68,7 +68,7 @@ export const HomeLanding = ({ setActiveTab }) => {
             </div>
             <h4 className="text-sm font-bold text-white">One-Time Registration + {formatMoney(FEES.monthlyNGN)}/mo</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Drivers pay a one-time <strong>{formatMoney(FEES.registrationNGN)}</strong> registration fee for FRSC license verification, earn the D-Drive Bonafide Member badge, and pay <strong>{formatMoney(FEES.monthlyNGN)}/month</strong> to receive active client messages.
+              Drivers pay a one-time <strong>{formatMoney(FEES.registrationNGN)}</strong> registration fee for FRSC license verification, earn the D-Drive Bonafide Member badge, and pay <strong>{formatMoney(FEES.monthlyNGN)}/month</strong> to remain active and receive client messages.
             </p>
           </div>
 
@@ -77,9 +77,9 @@ export const HomeLanding = ({ setActiveTab }) => {
               <span className="text-xs font-bold uppercase text-emerald-400 tracking-wider">For Clients in Nigeria</span>
               <span className="text-lg font-mono font-extrabold text-emerald-400">{formatMoney(FEES.registrationNGN)}</span>
             </div>
-            <h4 className="text-sm font-bold text-white">Platform Access + {formatMoney(FEES.monthlyNGN)}/mo</h4>
+            <h4 className="text-sm font-bold text-white">One-Time Registration — No Monthly Fee</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Clients pay a <strong>{formatMoney(FEES.registrationNGN)}</strong> registration fee to unlock verified driver contacts across Nigeria and <strong>{formatMoney(FEES.monthlyNGN)}/month</strong> to maintain active direct live chat access.
+              Clients pay a <strong>one-time {formatMoney(FEES.registrationNGN)}</strong> registration fee to unlock full access to verified driver contacts across Nigeria. <strong>No monthly subscription required.</strong>
             </p>
           </div>
 
@@ -158,7 +158,7 @@ export const HomeLanding = ({ setActiveTab }) => {
             </div>
             <h3 className="text-base font-bold text-white">Direct Bank Transfer</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Complete the <strong>{formatMoney(FEES.registrationNGN)}</strong> registration fee and <strong>{formatMoney(FEES.monthlyNGN)}/month</strong> membership via direct transfer to our official <strong>WEMA BANK</strong> platform account.
+              Complete the <strong>{formatMoney(FEES.registrationNGN)}</strong> registration fee and, for drivers, the <strong>{formatMoney(FEES.monthlyNGN)}/month</strong> subscription via direct transfer to our official <strong>WEMA BANK</strong> platform account.
             </p>
           </div>
 

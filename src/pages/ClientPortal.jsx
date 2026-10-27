@@ -75,7 +75,7 @@ export const ClientPortal = () => {
         ) : (
           <div className="flex items-center space-x-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-emerald-400 text-xs font-semibold">
             <ShieldCheck size={16} />
-            <span>Active Nigeria Access ({formatMoney(FEES.monthlyNGN)}/mo)</span>
+            <span>Active Nigeria Access (One-Time Fee)</span>
           </div>
         )}
       </div>
@@ -91,8 +91,8 @@ export const ClientPortal = () => {
               <div>
                 <h3 className="text-base font-bold text-white flex items-center gap-2">
                   <span>Nigeria Chauffeur Directory: One-Time {formatMoney(FEES.registrationNGN)} Access Fee</span>
-                  <span className="text-[10px] px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded-full border border-amber-500/30 font-mono">
-                    + {formatMoney(FEES.monthlyNGN)}/mo
+                  <span className="text-[10px] px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 font-mono">
+                    No Monthly Fee
                   </span>
                 </h3>
                 <p className="text-xs text-slate-300 mt-1 max-w-2xl">

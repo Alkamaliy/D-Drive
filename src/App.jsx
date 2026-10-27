@@ -71,7 +71,7 @@ const MainLayout = () => {
             </span>
             <span className="flex items-center space-x-1">
               <Globe size={14} className="text-amber-400" />
-              <span>Subscription: {formatMoney(FEES.monthlyNGN)}/mo</span>
+              <span>Driver Subscription: {formatMoney(FEES.monthlyNGN)}/mo</span>
             </span>
           </div>
 
