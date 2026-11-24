@@ -10,7 +10,10 @@ import {
   CreditCard, 
   ArrowRight,
   ChevronRight,
-  Landmark
+  Landmark,
+  PlayCircle,
+  BookOpen,
+  CheckCircle2
 } from 'lucide-react';
 
 export const HomeLanding = ({ setActiveTab }) => {
@@ -175,6 +178,71 @@ export const HomeLanding = ({ setActiveTab }) => {
         </div>
       </section>
 
+      {/* Driving Masterclass Video Section */}
+      <section className="max-w-5xl mx-auto px-4">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 overflow-hidden">
+
+          {/* Header */}
+          <div className="px-6 sm:px-8 pt-8 pb-5 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">
+                <PlayCircle size={16} />
+                <span>Free Driving Masterclass</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                Learn How to Drive a Car{' '}
+                <span className="text-amber-400">Step by Step</span>
+              </h2>
+              <p className="text-slate-400 text-sm mt-2 max-w-xl">
+                Whether you are a complete beginner or brushing up on skills, this masterclass covers
+                everything you need to drive safely and confidently on Nigerian roads.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold shrink-0">
+              <BookOpen size={14} />
+              <span>Beginner Friendly</span>
+            </div>
+          </div>
+
+          {/* Video Embed — 16:9 responsive */}
+          <div className="mx-4 sm:mx-8 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl shadow-black/50">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/A4cQMODdMvY?rel=0&modestbranding=1"
+                title="How to Drive a Car - Complete Beginners Guide"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+
+          {/* What you will learn */}
+          <div className="px-6 sm:px-8 py-6">
+            <p className="text-[11px] font-extrabold uppercase tracking-widest text-slate-400 mb-4">
+              What You Will Learn
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                'Starting, steering and stopping safely',
+                'Understanding traffic signs and rules in Nigeria',
+                'Parking techniques — parallel and reverse',
+                'Defensive driving on Nigerian highways',
+                'Manual vs automatic gear shifting',
+                'Night driving and bad weather safety tips',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2.5 text-xs text-slate-300">
+                  <CheckCircle2 size={14} className="text-amber-400 shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Terms & Conditions */}
       <section className="max-w-5xl mx-auto px-4">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 shadow-[0_0_0_1px_rgba(251,191,36,0.08)]">
           <div className="flex items-center gap-3 mb-5">

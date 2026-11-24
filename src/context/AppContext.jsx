@@ -169,10 +169,10 @@ export const AppProvider = ({ children }) => {
     if (user.role === 'driver') {
       setDriverUser(user);
       setDrivers(prev => [user, ...prev]);
-      openPaymentModal('driver', 'registration');
+      // Payment is now handled by the RegistrationGate component
     } else if (user.role === 'client') {
       setClientUser(user);
-      openPaymentModal('client', 'registration');
+      // Payment is now handled by the RegistrationGate component
     }
 
     return user;
@@ -382,9 +382,20 @@ export const AppProvider = ({ children }) => {
     pendingVerifications: drivers.filter(d => !d.licenseVerified).length,
   };
 
+  // Computed: is the user fully registered (authenticated + paid)?
+  // Admin bypasses payment check.
+  const isFullyRegistered = (() => {
+    if (!currentUser) return false;
+    if (currentUser.role === 'admin') return true;
+    if (currentUser.role === 'driver') return !!driverUser?.isBonafidePaid;
+    if (currentUser.role === 'client') return !!clientUser?.isAccessPaid;
+    return false;
+  })();
+
   return (
     <AppContext.Provider
       value={{
+        isFullyRegistered,
         currentUser,
         currentRole,
         setCurrentRole,

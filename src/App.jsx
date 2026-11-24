@@ -3,6 +3,7 @@ import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { PaymentModal } from './components/PaymentModal';
 import { AuthModal } from './components/AuthModal';
+import { RegistrationGate } from './components/RegistrationGate';
 import { HomeLanding } from './pages/HomeLanding';
 import { DriverPortal } from './pages/DriverPortal';
 import { ClientPortal } from './pages/ClientPortal';
@@ -12,7 +13,7 @@ import { Car, ShieldCheck, Heart, Lock, Globe } from 'lucide-react';
 
 const MainLayout = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const { currency, formatMoney, FEES } = useApp();
+  const { currency, formatMoney, FEES, isFullyRegistered } = useApp();
 
   const renderActiveTab = () => {
     switch (activeTab) {
@@ -31,6 +32,11 @@ const MainLayout = () => {
     }
   };
 
+  // If user hasn't completed registration + payment, show the gate
+  if (!isFullyRegistered) {
+    return <RegistrationGate />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#070a14] text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans">
       
@@ -42,7 +48,7 @@ const MainLayout = () => {
         {renderActiveTab()}
       </main>
 
-      {/* Auth & Payment Modals */}
+      {/* Auth & Payment Modals (still available inside the platform for subscription renewals etc.) */}
       <AuthModal />
       <PaymentModal />
 
